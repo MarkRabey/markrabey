@@ -1,0 +1,76 @@
+// ==========================================================================
+//  Mixins - from GroundWork-CSS - https://github.com/MarkRabey/GroundWork-CSS
+// ==========================================================================
+
+.transition(@property: all,@duration: 1s,@timing-function: ease,@delay: 0s) {
+	-webkit-transition: @property @duration @timing-function @delay;
+	-moz-transition: @property @duration @timing-function @delay;
+	-o-transition: @property @duration @timing-function @delay;
+	transition: @property @duration @timing-function @delay;
+}
+
+.transition-transform(@duration:1s) {
+	-webkit-transition: -webkit-transform @duration;
+	-moz-transition: -moz-transform @duration;
+	transition: transform @duration;
+}
+
+.transform(@value:translateY(0px)) {
+	-webkit-transform: @value;
+	-moz-transform: @value;
+	-ms-transform: @value;
+	transform: @value;
+}
+
+.border-radius(@radius:4px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.background-color(@color,@alpha) {
+	background-color: rgb(red(@color), green(@color), blue(@color));
+	background-color: rgba(red(@color), green(@color), blue(@color), @alpha);
+}
+
+.background-size(@size) {
+	-webkit-background-size: @size;
+	-moz-background-size: @size;
+	-o-background-size: @size;
+	background-size: @size;
+}
+
+.absolute-position(@top,@right,@bottom,@left) {
+	position:absolute;
+	top: @top;
+	right: @right;
+	bottom: @bottom;
+	left: @left;
+}
+
+.text-shadow (@h-shadow: 0, @v-shadow: 1px, @blur: 3px, @color: rgba(0, 0, 0, 0.25)) {
+	text-shadow: @h-shadow @v-shadow @blur @color;
+}
+
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow: @string;
+	box-shadow: @string;
+}
+.drop-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow: @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.inner-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.box-sizing (@type: border-box) {
+	-webkit-box-sizing: @type;
+	-moz-box-sizing: @type;
+	-o-box-sizing: @type;
+	box-sizing: @type;
+}

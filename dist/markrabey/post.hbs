@@ -9,6 +9,9 @@
 
         {{! Everything inside the #post tags pulls data from the post }}
         {{#post}}
+            {{#contentFor "metaTitle"}}{{title}} | {{@blog.title}}{{/contentFor}}
+            {{#contentFor "metaDescription"}}{{excerpt characters="155"}}&hellip;{{/contentFor}}
+            {{#contentFor "metaKeywords"}}{{tags autolink="false"}}{{#if meta_keywords}}, {{meta_keywords}}{{else}}, {{@blog.title}},{{@blog.description}}{{/if}}{{/contentFor}}
             <h1 class="post-title">{{{title}}}</h1>
             <span class="post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time> {{tags prefix="on " separator=" | "}}</span>
 

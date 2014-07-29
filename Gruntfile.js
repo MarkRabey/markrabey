@@ -33,13 +33,14 @@ module.exports = function(grunt) {
     }, // close cssmin
     less: {
       options: {
-        banner: _banner
+        banner: _banner,
+        optimization: 1
       },
       build: {
         files: [{
           cwd: 'src/less',
           expand: true,
-          src: ['*.less'],
+          src: ['markrabey.less'],
           dest: 'src/css/',
           ext: '.css'
         }]

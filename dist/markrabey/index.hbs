@@ -1,7 +1,8 @@
 {{!< default}}
+{{#contentFor "metaTitle"}}{{@blog.title}} | {{@blog.description}}{{/contentFor}}
+{{#contentFor "metaDescription"}}{{meta_description}}{{/contentFor}}
+{{#contentFor "metaKeywords"}}{{#if meta_keywords}}{{meta_keywords}}{{else}}{{@blog.title}},{{@blog.description}}{{/if}}{{/contentFor}}
 
-{{! The comment above "< default" means - insert everything in this file into
-    the {body} of the default.hbs template, which contains our header/footer. }}
 
 {{! The main content area on the homepage }}
 <main class="content" role="main">
