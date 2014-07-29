@@ -17,13 +17,14 @@
     {{! Styles }}
     <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/monokai_sublime.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset "css/markrabey.min.css"}}" />
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
 </head>
 <body class="{{body_class}}">
     {{! site logo and description }}
-    <header class="site-head" {{#if @blog.cover}}style="background: url({{@blog.cover}}) fixed; background-size: cover;"{{/if}}>
+    <header class="site-head" {{#if @blog.cover}}style="background: url({{@blog.cover}}) fixed;"{{/if}}>
         <div class="vertical">
             <div class="site-head-content inner">
                 <a class="blog-logo" href="{{@blog.url}}">
@@ -41,25 +42,34 @@
                     {{/if}}
                 </a>
                 <h2 class="blog-description">{{@blog.description}}</h2>
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="http://twitter.com/MarkRabey" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="http://facebook.com/markrabey1983" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="http://github.com/MarkRabey" target="_blank"><i class="fa fa-github"></i></a></li>
+                        <li><a href="mailto:hello@markrabey.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+                </div>
             </div>
+            <footer class="site-footer site-head-content">
+                <div class="inner">
+                     <section class="copyright">&copy; {{date format="YYYY"}} <a href="{{@blog.url}}/">{{@blog.title}}</a></section>
+                     <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
+                </div>
+            </footer>
         </div>
+        <div class="header-overlay"></div>
     </header>
     <div id="page">
         {{! Everything else gets inserted here }}
         {{{body}}}
 
-        <footer class="site-footer">
-            <div class="inner">
-                 <section class="copyright">&copy; {{date format="YYYY"}} <a href="{{@blog.url}}/">{{@blog.title}}</a></section>
-                 <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
-            </div>
-        </footer>
+        
     </div><!-- #page -->
 
     {{! Ghost outputs important scripts and data with this tag }}
     {{ghost_foot}}
 
-    {{! The main JavaScript file for Blank One }}
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
     <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>

@@ -498,23 +498,28 @@ margin on the iframe, cause it breaks stuff. */
 ========================================================================== */
 /* Container */
 #page {
-  /*max-width: 990px;*/
-  margin: 0 auto;
+  float: right;
+  margin-left: 30%;
   background: #ffffff;
 }
 #page .content {
-  max-width: 800px;
   margin: auto;
   padding: 0 25px;
 }
 /* Big cover image on the home page */
 .site-head {
-  position: relative;
   display: table;
-  width: 100%;
-  height: 60%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  float: left;
+  height: 100%;
+  width: 30%;
   margin-bottom: 5rem;
   text-align: center;
+}
+.site-head .site-head-content {
+  z-index: 800;
 }
 .site-head a {
   color: #ffffff;
@@ -523,22 +528,30 @@ margin on the iframe, cause it breaks stuff. */
   color: #e25440;
   text-decoration: none;
 }
-.site-head:after {
-  content: "";
-  pointer-events: none;
+.site-head .social-icons ul {
+  list-style-type: none;
+  padding: 0;
+}
+.site-head .social-icons ul li {
+  display: inline-block;
+  font-size: 5rem;
+  width: 20%;
+}
+.site-head .header-overlay {
   display: block;
   position: absolute;
-  /* could also be absolute */
+  z-index: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
   height: 100%;
-  width: 100%;
-  z-index: 10;
-  background-color: #222222;
-  background-color: rgba(34, 34, 34, 0.2);
+  background-color: #373737;
+  background-color: rgba(55, 55, 55, 0.75);
 }
 .blog-logo {
   text-decoration: none;
+  margin-top: 10px;
 }
 .blog-logo img {
   max-height: 100px;
@@ -547,7 +560,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 /* The details of your blog. Defined in ghost/settings/ */
 .blog-title {
-  margin: 10px 0 10px 0;
+  margin: 10px;
   font-size: 5rem;
   font-weight: bold;
   font-family: 'helvetica', arial, sans-serif;
@@ -746,16 +759,16 @@ margin on the iframe, cause it breaks stuff. */
     Footer - The bottom of every page
 ========================================================================== */
 .site-footer {
-  position: relative;
-  margin: 8rem 0 0 0;
-  padding: 4rem 0;
-  border-top: #ccc 1px solid;
+  position: absolute;
+  bottom: 0;
+  margin: 8rem 0 0;
+  padding: 2rem 0;
+  width: 100%;
   font-family: 'helvetica', arial, sans-serif;
   font-size: 1.3rem;
   line-height: 1.7em;
-  color: #333;
-  text-align: center;
-  background: #fff;
+  color: #efefef;
+  background-color: #222222;
 }
 .site-footer a {
   font-weight: 700;
@@ -783,9 +796,12 @@ margin on the iframe, cause it breaks stuff. */
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
-    height: auto;
-    min-height: 240px;
     padding: 15% 0;
+  }
+  .site-head .social-icons ul li {
+    display: block;
+    margin: 10px auto;
+    width: auto;
   }
   .blog-title {
     font-size: 4rem;
