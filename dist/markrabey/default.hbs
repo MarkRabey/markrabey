@@ -15,8 +15,9 @@
     <link rel="shortcut icon" href="{{asset "favicon.ico"}}">
 
     {{! Styles }}
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/monokai_sublime.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset "css/markrabey.min.css"}}" />
-
+    
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
 </head>
@@ -30,9 +31,13 @@
                         <img src="{{@blog.logo}}" alt="{{@blog.title}}" />
                     {{/if}}
                     {{#if post}}
-                        <h2>{{@blog.title}}</h2>
+                        <h2 class="blog-title">{{@blog.title}}</h2>
                     {{else}}
-                        <h1>{{@blog.title}}</h1>
+                        {{#if tag}}
+                            <h2 class="blog-title">{{@blog.title}}</h2>
+                        {{else}}
+                            <h1 class="blog-title">{{@blog.title}}</h1>
+                        {{/if}}
                     {{/if}}
                 </a>
                 <h2 class="blog-description">{{@blog.description}}</h2>
@@ -57,6 +62,7 @@
     {{! The main JavaScript file for Blank One }}
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
-
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
