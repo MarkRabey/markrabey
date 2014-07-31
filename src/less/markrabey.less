@@ -125,7 +125,7 @@ hr {
 
 blockquote {
     .box-sizing(border-box);
-    margin: 1.6em 0 1.6em -2.2em;
+    // margin: 1.6em 0 1.6em -2.2em;
     padding: 0 0 0 1.6em;
     border-left: @gray-darker 0.4em solid;
 }
@@ -284,11 +284,16 @@ margin on the iframe, cause it breaks stuff. */
     General - The main styles for the the theme
 ========================================================================== */
 
+#wrapper {
+    height: 100%;
+    width: 100%;
+}
+
 /* Container */
 #page{
-    // width: 70%;
+    width: 70%;
     float: right;
-    margin-left: 30%;
+    // margin-left: 30%;
     background: @white;
 }
 
@@ -300,8 +305,8 @@ margin on the iframe, cause it breaks stuff. */
 }
 /* Big cover image on the home page */
 .site-head {
-    display: table;
-    position: fixed;
+    // display: table;
+    // position: fixed;
     top: 0;
     bottom: 0;
     float: left;
@@ -489,9 +494,10 @@ margin on the iframe, cause it breaks stuff. */
     /* Break out larger images to be wider than the main text column
        the class is applied with jQuery */
     .full-img {
-        width: 126%;
-        max-width: none;
-        margin: 0 -13%;
+        // width: 126%;
+        // max-width: none;
+        // margin: 0 -13%;
+
     }
 }
 
@@ -586,8 +592,6 @@ margin on the iframe, cause it breaks stuff. */
 ========================================================================== */
 
 .site-footer {
-    position: absolute;
-    bottom: 0;
     margin: 8rem 0 0;
     padding: 2rem 0;
     width: 100%;
@@ -596,9 +600,18 @@ margin on the iframe, cause it breaks stuff. */
     line-height: 1.7em;
     color: @gray-lighter;
     background-color: @black;;
+    text-align: center;
+    clear: both;
     a {
-        font-weight: 700;
+        color: @white;
+        &:hover {
+            color: @base-link-color;
+            text-decoration: none;
+        }
     }
+    // a {
+    //     font-weight: 700;
+    // }
 }
 
 .poweredby {
