@@ -2,6 +2,15 @@
 //  Mixins - from GroundWork-CSS - https://github.com/MarkRabey/GroundWork-CSS
 // ==========================================================================
 
+.display-flex(@direction: row) {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+    flex-direction: @direction;
+}
+
 .transition(@property: all,@duration: 1s,@timing-function: ease,@delay: 0s) {
 	-webkit-transition: @property @duration @timing-function @delay;
 	-moz-transition: @property @duration @timing-function @delay;

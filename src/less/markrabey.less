@@ -1,8 +1,6 @@
 @import url('normalize.less');
-@import url('icons.less');
 @import url('mixins.less');
 @import url('variables.less');
-
 
 
 /* ==========================================================================
@@ -75,7 +73,7 @@ h6 {
 /* links */
 a {
     color: @base-link-color;
-    .transition(color,0.4s,ease-in-out);
+    .transition(all,0.3s,ease);
 }
 a:visited {
     /*color: purple;*/
@@ -273,7 +271,7 @@ margin on the iframe, cause it breaks stuff. */
     margin: 0 auto;
 }
 
-/* Centres vertically yo. (IE8+) */
+/* Centers vertically yo. (IE8+) */
 .vertical {
     display: table-cell;
     vertical-align: middle;
@@ -284,174 +282,145 @@ margin on the iframe, cause it breaks stuff. */
     General - The main styles for the the theme
 ========================================================================== */
 
-#wrapper {
-    height: 100%;
-    width: 100%;
-}
-
-/* Container */
-#page{
-    width: 70%;
-    float: right;
-    // margin-left: 30%;
-    background: @white;
-}
-
-#page .content {
-    // max-width: 800px;
-    // width: 70%;
-    margin: auto;
-    padding:0 25px;
-}
 /* Big cover image on the home page */
 .site-head {
-    // display: table;
-    // position: fixed;
-    top: 0;
-    bottom: 0;
-    float: left;
-    height: 100%;
-    width: 30%;
-    margin-bottom: 5rem;
-    .site-head-content {
-        // display: table-cell;
-        z-index: 800;
-        
-    }
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 6rem;
     text-align: center;
-    a {
-        color: @white;
-        &:hover {
-            color: @base-link-color;
-            text-decoration: none;
-        }
-    }
-
-    .social-icons {
-        ul {
-            list-style-type: none;
-            padding: 0;
-            li {
-                display: inline-block;
-                font-size: 5rem;
-                width: 20%;
+    color: @white;
+    background: #2B2B2B no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    &.post-head {
+        background: @white;
+        margin-bottom: 5rem;
+        height: 300px;
+        .site-head-content .blog-title {
+            margin: 3.5rem 0;
+            a {
+                color: @gray-darkest;
+                text-shadow: none;
             }
         }
-    }
-    .header-overlay {
-        display: block;
-        position: absolute;
-        z-index: 0;
-        .position(0,0,0,0);
-        height: 100%;
-        .background-color(#373737,0.75);
     }
 }
 
 .blog-logo {
-    text-decoration: none;
-    margin-top: 10px;
-    img {
-        max-height: 100px;
-        width: auto;
-        line-height: 0;
-    }
+    
 }
 
 /* The details of your blog. Defined in ghost/settings/ */
 .blog-title {
-    margin: 10px;
-    font-size: 5rem;
-    font-weight: bold;
-    font-family: 'helvetica', arial, sans-serif;
+    margin: 3.5rem 0 2rem;
+    font-size: 18px;
+    a {
+        font-family: @primary-font-family;
+        font-weight: 700;
+        font-size: 4.8rem;
+        color: @white;
+        .text-shadow(2px, 2px, 0, @black);
+        text-decoration: none;
+    }
 }
 
 .blog-description {
-    margin: 0;
-    font-size: 1.8rem;
-    line-height: 1.5em;
-    font-weight: 300;
-    font-family: 'helvetica', arial, sans-serif;
+    font-family: @primary-font-family;
+    font-size: 1.6rem;
     color: @gray-lighter;
+    line-height: 1.4;
+    .text-shadow(1px, 1px, 2px, @black);
+    width: 70%;
+    margin: 0 auto;
+    text-rendering: optimizelegibility;
 }
+
+.content {
+    width: 80%;
+    max-width: 780px;
+    margin: 0 auto;
+    .pause {
+        width: 100%;
+        max-width: 780px;
+        border: none;
+        margin: 0 auto 4rem;
+        border-top: 1px solid #ddd;
+    }
+}
+
 
 /* Every post, on every page, gets this style on its <article> tag */
 .post {
-    position: relative;
-    margin: 4rem auto;
-    padding-bottom: 4rem;
-    border-bottom: #ccc 1px solid;
-    word-break: break-word;
-    hyphens: auto;
+    border-bottom: 1px solid @gray-lighter;
+    margin-bottom: 6rem;
 }
-
-/* Add a little circle in the middle of the border-bottom on our .post
-   just for the lolz and stylepoints. Uncomment to add back in.
-.post:after {
-    display: block;
-    content: "";
-    width: 7px;
-    height: 7px;
-    border: #E7EEF2 1px solid;
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    margin-left: -5px;
-    background: #fff;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    box-shadow: #fff 0 0 0 5px;
-}
-*/
-
-.post-title {
-    margin:0;
-    a {
-        text-decoration: none;
-        color: @base-font-color;
-        &:hover {
-            color: @base-link-color;
+.post-header {
+    .post-title {
+        padding: 1rem 0 1.2rem;
+        margin: 0;
+        line-height: 1.2em;
+        a {
+            font-family: @primary-font-family;
+            font-weight: bold;
+            color: @gray-darkest;
+            text-decoration: none;
+            &:hover {
+                color: @base-link-color;
+            }
         }
     }
+    ul {
+        margin: 0;
+        padding: 0;
+        li {
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            &.post-tags a:hover, &.post-comments a:hover {
+                text-decoration: underline;
+                color: @base-link-color;
+            }
+            &.post-date, &.post-tags, &.post-tags a, &.post-comments, &.post-comments a {
+                font-family: @primary-font-family;
+                font-weight: 300;
+                font-size: 1.4rem;
+                color: @gray-darker;
+                text-decoration: none;
+            }
+            &.post-tags:before, &.post-comments:before {
+                content: " • ";
+                font-weight: 700;
+                color: @gray-darker;
+                font-family: @primary-font-family;
+                font-size: 1.4rem;
+            }
+        }
+    }
+    
 }
 
+
+
 .post-excerpt p {
-    margin: 1.6rem 0 0 0;
-    font-size: 0.9em;
-    line-height: 1.6em;
+
 }
 
 .post-meta {
-    display: inline-block;
-    margin: 0 0 5px 0;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.5rem;
-    a {
-        text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+
 }
 
 .publish-meta {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 4.3rem 0 4rem 0;
-    text-align: right;
+
 }
 
 .publish-heading {
-    display: block;
-    font-weight: bold;
+
 }
 
 .publish-date {
-    display: block;
-    font-size: 1.4rem;
-    line-height: 1.5em;
+
 }
 
 /* ==========================================================================
@@ -460,68 +429,63 @@ margin on the iframe, cause it breaks stuff. */
 
 
 .post-template {
-    /* Stop .full-img from creating horizontal scroll - slight hack due to
-       imperfections with browser width % calculations and rounding */
-    .content {
-        overflow: hidden;
-    }
-    /* Tweak the .post wrapper style */
-    .post {
-        margin-top: 0;
-        border-bottom: none;
-        padding-bottom: 0;
-        /* Kill that stylish little circle that was on the border, too */
-        &:after {
-            display: none;
-        }
-    }
-    /* Insert some mad padding up in the header for better spacing */
-    .post-header {
-        padding: 60px 0;
-    }
+
 }
 
 .post-content {
-    /* Keep images centred and within the bounds of the post-width */
     img {
         display: block;
         max-width: 100%;
         height: auto;
         margin: 0 auto;
         padding: 0.6em 0;
-    }
-
-    /* Break out larger images to be wider than the main text column
-       the class is applied with jQuery */
-    .full-img {
-        // width: 126%;
-        // max-width: none;
-        // margin: 0 -13%;
-
-    }
+    } 
 }
 
-/* The author credit area after the post */
+
 .post-footer {
-    position: relative;
-    margin: 4rem 0 0 0;
-    padding: 4rem 0 0 0;
-    border-top: #ccc 1px solid;
-    h4 {
-        font-size: 1.8rem;
-        margin: 0;
+    width: 100%;
+    max-width: 780px;
+    margin: 1rem auto;
+    max-width: 100%;
+    border-top: 4px @gray-darkest solid;
+    .display-flex(row);
+    justify-content: flex-start;
+    padding: 1.5rem 0 0;
+    .share-post {
+        width: 20%;
+        margin: 1.7rem auto;
+        padding: 0;
+        text-align: center;
+        h4 {
+            font-family: @primary-font-family;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: @gray-darkest;
+            padding: 0;
+            margin: 0 auto;
+            text-align: center;
+        }
+        a {
+            font-size: 2.2rem;
+            color: @gray;
+            text-decoration: none;
+            margin: 1.5rem auto;
+            padding-right: 0.5rem;
+            text-align: center;
+            &:hover {
+                color: @gray-darkest;
+            }
+        }
     }
-    p {
-        margin: 1rem 0;
+    .related-posts {
+        flex: 3;
+        width: 60%;
+        font-family: @primary-font-family;
+        font-weight: 700;
+        color: @gray-darkest;
         font-size: 1.4rem;
-        line-height: 1.6em;
-    }
-    .share a {
-        font-size: 1.8rem;
-        display: inline-block;
-        margin: 1rem 1.6rem 1.6rem 0;
-        text-decoration: none;
-        &:hover {}
+        border-right: 1px @gray-lighter solid;
     }
 }
 
@@ -535,56 +499,55 @@ margin on the iframe, cause it breaks stuff. */
 
 
 /* ==========================================================================
-    Third Party Elements - Embeds from other services
-========================================================================== */
-
-/* Github */
-
-.gist table {
-    margin: 0;
-    font-size: 1.4rem;
-}
-
-.gist .line-number {
-    min-width: 25px;
-    font-size: 1.1rem;
-}
-
-
-/* ==========================================================================
     Pagination - Tools to let you flick between pages
 ========================================================================== */
 
 /* The main wrapper for our pagination links */
 .pagination {
+    font-family: @primary-font-family;
+    font-weight: 300;
+    font-size: 1.4rem;
     position: relative;
+    padding-bottom: 10rem;
+    margin: 0 auto;
     width: 100%;
-    margin: 4rem auto;
-    font-family: 'helvetica', arial, sans-serif;
-    font-size: 1.3rem;
+    max-width: 780px;
     text-align: center;
-}
-/* Push the previous/next links out to the left/right */
-.older-posts,
-.newer-posts {
-    position: absolute;
-    display: inline-block;
-    padding: 0;
-    text-decoration: none;
+    .page-number {
+        color: @gray-darker;
+        display: inline-block;
+        margin: 1.4rem auto;
+    }
+
+    /* Push the previous/next links out to the left/right */
+    .older-posts,
+    .newer-posts {
+        display: inline-block;
+        .border-radius();
+        border: 2px solid @gray-light;
+        padding: 0.8rem 2.5rem;
+        position: absolute;
+        max-width: 100%;
+        transition: border-color ease-out 0.4s, color ease-out 0.4s;
+        &:hover {
+            border-color: @gray-dark;
+        }
+    }
+
+    .older-posts {
+        right: 0;
+    }
+
+    .newer-posts {
+        left: 0;
+    }
+
+    a {
+        color: @gray-darker;
+        text-decoration: none;
+    }
 }
 
-.older-posts {
-    right: 0;
-}
-
-.page-number {
-    display: inline-block;
-    padding: 2px 0;
-}
-
-.newer-posts {
-    left: 0;
-}
 
 
 /* ==========================================================================
@@ -592,40 +555,65 @@ margin on the iframe, cause it breaks stuff. */
 ========================================================================== */
 
 .site-footer {
-    margin: 8rem 0 0;
-    padding: 2rem 0;
+    background: @black;
     width: 100%;
-    font-family: 'helvetica',arial,sans-serif;
-    font-size: 1.3rem;
-    line-height: 1.7em;
-    color: @gray-lighter;
-    background-color: @black;;
-    text-align: center;
-    clear: both;
-    a {
-        color: @white;
-        &:hover {
-            color: @base-link-color;
-            text-decoration: none;
+    .content {
+        padding: 6rem 0;
+        p {
+            text-align: center;
+            font-family: @primary-font-family;
+            font-weight: 300;
+            font-size: 1.4rem;
+            color: @gray-dark;
+            line-height: 1.4em;
+            text-shadow: 0px 1px 0px @black;
+            margin: 0;
         }
     }
-    // a {
-    //     font-weight: 700;
-    // }
+    ul {
+        display: table;
+        border-spacing: 20px 0;
+        border-collapse: separate;
+        margin: 0 auto;
+        position: relative;
+        padding: 0;
+        li {
+            padding: 0;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            border-radius: 100%;
+            background: @gray-darkest;
+            .box-shadow(0px 0px 4px 0px rgba(0,0,0,0.20));
+            
+            &:hover {
+                .box-shadow(0px 1px 4px rgba(0,0,0,1));
+                .transition(box-shadow, 0.25s);
+            }
+            a {
+                line-height: 4.4rem;
+                color: @gray-light;
+                text-decoration: none;
+                &:hover {
+                    color: @base-link-color;
+                }
+                font-size: 3rem;
+                width: 4.4rem;
+                height: 4.4rem;
+            }
+        }
+    }
+    hr {
+        background: #383838;
+        height: 1px;
+        border-top: 1px #202020 solid;
+        width: 35%;
+        margin: 2.4rem auto;
+    }
 }
 
 .poweredby {
-    .icon-ghost {
-        font-weight: 700;
-        text-decoration: none;
-        &:hover {
-            text-decoration: none;
-        }
-        &:before {
-            font-size: 1rem;
-            margin-right: 0.2em;
-        }
-    }
+
 }
 
 
@@ -634,70 +622,58 @@ margin on the iframe, cause it breaks stuff. */
 ========================================================================== */
 
 @media only screen and (max-width: @breakpoint-large) {
-
-    blockquote {
-        margin-left: 0;
-    }
-    
-    // #page {
-    //     width: 80%;
-    //     margin: 0 20%;
-    // }
-
     .site-head {
-        .box-sizing(border-box);
-        // width: 20%;
-        padding: 15% 0;
-        .social-icons {
-            ul {
-                li {
-                    display: block;
-                    margin: 10px auto;
-                    width: auto;
-                }
-            }
-        }
+        min-height: 280px;
     }
-
-    .blog-title {
+        
+    .blog-title a {
         font-size: 4rem;
         letter-spacing: -1px;
+        line-height: 1.1;
     }
 
     .blog-description {
         font-size: 1.7rem;
         line-height: 1.5em;
     }
-
-    .post {
-        font-size: 0.9em;
-        line-height: 1.6em;
+    
+    .post-title {
+        font-size: 3.5rem;
     }
-
-    .post-template .post {
-        padding-bottom: 1rem;
-        .post-header {
-            padding: 40px 0;
-        }
+        
+    .post-content {
+        font-size: 1.8rem;
     }
 
     h1 {
-        font-size: 4.8rem;
+        font-size: 3.5rem;
         text-indent: -2px;
     }
 
     h2 {
-        font-size: 3.8rem;
+        font-size: 3rem;
     }
 
     h3 {
-        font-size: 3.3rem;
-    }
-
-    h4 {
         font-size: 2.8rem;
     }
 
+    h4 {
+        font-size: 2.4rem;
+    }
+        
+    .post-footer .share-post {
+        width: 20%;
+    }
+
+    .post-footer .share-post h4 {
+        margin: 0 auto 10%;
+    }
+
+    .post-footer .share-post a {
+        padding: 0 5% 0 0;
+        margin: 0.5rem 0 0;
+    }
 }
 
 /* ==========================================================================
@@ -706,43 +682,32 @@ margin on the iframe, cause it breaks stuff. */
 
 
 @media only screen and (max-width: @breakpoint-medium) {
-
-    .blog-logo img {
-        max-height: 80px;
-    }
-
-    .inner,
-    .pagination {
-        width: auto;
-        margin-left: 16px;
-        margin-right: 16px;
-    }
-
-    .post {
-        width:auto;
-        margin-left: 16px;
-        margin-right: 16px;
-        font-size: 0.8em;
-        line-height: 1.6em;
-    }
-
     .site-head {
-        padding: 10% 0;
+        max-height: 100%;
+        margin-bottom: 3rem;
+        width: 100%;
     }
-
-    .blog-title {
-        font-size: 3rem;
+    
+    .content {
+        width: 94%;
+    }
+   
+   .blog-title a {
+       font-size: 3rem;
+       letter-spacing: -1px;
+       margin: 2rem auto;
     }
 
     .blog-description {
         font-size: 1.5rem;
+        line-height: 1.5em;
+        width: 90%;
     }
-
 
     h1, h2 {
         font-size: 3rem;
-        line-height: 1.1em;
         letter-spacing: -1px;
+        line-height: 1.1em;
     }
 
     h3 {
@@ -752,57 +717,71 @@ margin on the iframe, cause it breaks stuff. */
     h4 {
         font-size: 2.3rem;
     }
-
-    .post-template {
-        .post {
-            padding-bottom: 0;
+    
+    .post-title {
+        font-size: 2.8rem;
+    }
+        
+    .post-content {
+        font-size: 1.6rem;
+    }
+    
+    .post-header ul {
+        line-height: 1.4;
+    }
+    .date, .readtime, .posttags {
+        font-size: 1.2rem;
+        line-height: 1.2;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .pagination {
+        padding: 2rem 0 5rem;
+        width: 100%;
+        text-align: center; 
+    }
+    
+    .newer-posts, .older-posts {
+        position: static;
+    }
+        
+    .page-number {
+        display: block;}
+    
+    .post-footer {
+        display: block;
+        .share-post {
+            display: block;
+            margin: 3rem auto;
+            width: 100%;
+            text-align: center;
+            padding: 0;
+            a {
+                padding: 0;
+                margin: 0 0.8rem;
+                font-size: 2.5rem;
+                &:last-child {
+                    margin: 0 0.8rem; 
+                    padding: 0;
+                }
+            }
+            h4 {
+                padding: 0;
+                margin: 0 0 1.5rem 0;
+            }
         }
-        .post-header {
-            padding: 30px 0;
+        .related-posts {
+            display: block;
+            border-right: none;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
         }
     }
     
-    .post-content {
-        img {
-            padding: 0;
-        }
-        .full-img {
-            width: auto;
-            width: calc(100% + 32px); /* expand with to image + margins */
-            margin: 0 -16px; /* get rid of margins */
-            min-width: 0;
-            max-width: 112%; /* fallback when calc doesn't work */
-        }
-    }
-
-    .post-meta {
-        font-size: 1.3rem;
-    }
-
-    .post-footer {
-        padding: 4rem 0;
-        text-align: center;
-        .share {
-            position: static;
-            width: auto;
-            a {
-                margin: 1.4rem 0.8rem 0 0.8rem;
-            }
-        }
-    }
-
-    .older-posts,
-    .newer-posts {
-        position: static;
-        margin: 10px 0;
-    }
-
-    .page-number {
-        display: block;
-    }
-
-    .site-footer {
-        margin-top: 6rem;
-        font-size: 1.1rem;
+    .article {
+        margin-bottom: 4rem;
     }
 }
