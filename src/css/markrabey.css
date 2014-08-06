@@ -741,7 +741,7 @@ margin on the iframe, cause it breaks stuff. */
 /* ==========================================================================
     Media Queries - Smaller than @breakpoint-large
 ========================================================================== */
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 900px) {
   .site-head {
     min-height: 280px;
   }

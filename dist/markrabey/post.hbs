@@ -38,8 +38,7 @@
                 <meta name="twitter:title" content="{{title}} | {{@blog.title}}" />
                 <meta name="twitter:description" content="{{excerpt characters="155"}}&hellip;" />
                 <meta name="twitter:image" content="{{@blog.url}}{{asset "images/og-image.png"}}"/>
-                <meta name="twitter:site" content="@MarkRabey"/>
-                <meta name="twitter:creator" content="@MarkRabey"/>
+                {{> twitter-meta}}
             {{/contentFor}}
             <header class="post-header">
                 <ul>
@@ -57,7 +56,6 @@
                     </li>
                 </ul>
                 <h1 class="post-title">{{{title}}}</h1>
-                {{!-- <span class="post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date timeago="true"}}</time> {{tags prefix="on " separator=" | "}}</span> --}}
             </header>
             <section class="post-content">
                 {{content}}

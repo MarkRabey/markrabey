@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  
+  /* Related Posts */
   $('div#related-posts').css('text-align', 'center').html('<i class="fa fa-spinner fa-spin fa-5x"></i>');
   $.get('/rss', function(data) {
     var posts = [];
@@ -20,25 +22,21 @@ $(document).ready(function() {
             });
         }
     }
-
     var related = matchByTag(getCurrentPostTags('.post-tags'), posts);
     var count = 0;
     $('div#related-posts').css('text-align', 'left').html('<ul></ul>');
     var list = $('div#related-posts ul');
     related.forEach(function(post) {
-        console.log(post);
         if (count < 4) {
             $(list).append($('<li><a href="' + post.url + '">' + post.title + '</a></li>'));
         }
         count++;
     });
-
     if (count == 0) {
         $(list).append($('<p>No related posts were found. ' +
             'Check the <a href="/">index</a>.</p>'));
     }
   });
-  
 });
 
 
