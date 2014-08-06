@@ -1,56 +1,81 @@
 {{!< default}}
 
+<header class="site-head post-head">
+    <div class="vertical">
+        <div role='banner' class="site-head-content">
+            {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>{{/if}}
+            <h2 class="blog-title">
+                <a href="{{@blog.url}}">
+                    {{@blog.title}}
+                </a>
+            </h2>
+        </div>
+    </div>
+</header>
 {{! The comment above "< default" means - insert everything in this file into
     the {body} of the default.hbs template, which contains our header/footer. }}
-
 <main class="content" role="main">
-
+    <hr class="pause">
     <article role="article" itemscope itemtype="http://schema.org/BlogPosting" class="{{post_class}}">
 
         {{! Everything inside the #post tags pulls data from the post }}
         {{#post}}
-            {{#contentFor "metaTitle"}}{{title}} | {{@blog.title}}{{/contentFor}}
-            {{#contentFor "metaDescription"}}{{excerpt characters="155"}}&hellip;{{/contentFor}}
-            {{#contentFor "metaKeywords"}}{{tags autolink="false"}}{{#if meta_keywords}}, {{meta_keywords}}{{else}}, {{@blog.title}},{{@blog.description}}{{/if}}{{/contentFor}}
-            <h1 class="post-title">{{{title}}}</h1>
-            <span class="post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date timeago="true"}}</time> {{tags prefix="on " separator=" | "}}</span>
+            {{#contentFor "meta"}}
+                <title>{{title}} | {{@blog.title}}</title>
+                <meta name="description" content="{{excerpt characters="155"}}&hellip;" />
+                <meta name="keywords" content="{{tags autolink="false"}}{{#if meta_keywords}}, {{meta_keywords}}{{else}}, {{@blog.title}},{{@blog.description}}{{/if}}" />
 
+                {{! Open Graph }}
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="{{title}} | {{@blog.title}}" />
+                <meta property="og:description" content="{{excerpt characters="155"}}&hellip;" />
+                <meta property="og:site_name" content="{{@blog.title}}" />
+                <meta property="og:url" content="{{url absolute=true}}" />
+                <meta property="og:image" content="{{@blog.url}}{{asset "images/og-image.png"}}" />
+
+                {{! Twitter Cards }}
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:title" content="{{title}} | {{@blog.title}}" />
+                <meta name="twitter:description" content="{{excerpt characters="155"}}&hellip;" />
+                <meta name="twitter:image" content="{{@blog.url}}{{asset "images/og-image.png"}}"/>
+                {{> twitter-meta}}
+            {{/contentFor}}
+            <header class="post-header">
+                <ul>
+                    <li class="post-date">
+                        <time datetime="{{date format='YYYY-MM-DD'}}">{{date timeago="true"}}</time>
+                    </li>
+                    {{#if tags}}
+                        <li class="post-tags">
+                            {{tags prefix="on "}}
+                        </li>
+                    {{/if}}
+                    <li class="post-comments">
+                        <i class="fa fa-comments-o"></i>&nbsp;
+                        <a href="{{url}}#disqus_thread" data-disqus-identifier="{{id}}">Comments</a>
+                    </li>
+                </ul>
+                <h1 class="post-title">{{{title}}}</h1>
+            </header>
             <section class="post-content">
                 {{content}}
             </section>
 
             <footer class="post-footer">
+                <section class="related-posts">
+                    <h4>Related Posts:</h4>
+                    <div id="related-posts"></div>
+                </section>
 
-                {{!-- <section class="author">
-                    <h4>{{author.name}}</h4>
-                    <p>{{author.bio}}</p>
-                    <ul class="author-meta clearfix">
-                        {{#if author.location}}<li>{{author.location}}</li>{{/if}}
-                        {{#if author.website}}<li><a href="{{author.website}}">{{author.website}}</a></li>{{/if}}
-                    </ul>
-                </section> --}}
-
-                <section class="share">
-                    <h4>Share this post</h4>
-
-                    <a class="icon-twitter" href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}&amp;via=MarkRabey"
-                        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                        <span class="hidden">Twitter</span>
-                    </a>
-                    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-                        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                        <span class="hidden">Facebook</span>
-                    </a>
-                    <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
-                       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                        <span class="hidden">Google+</span>
-                    </a>
+                <section class="share-post">
+                    <h4>Share this:</h4>
+                    <a class="fa fa-twitter-square" target="_blank" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"><span class="hidden">Twitter</span></a>
+                    <a class="fa fa-facebook-square" target="_blank" href="http://www.facebook.com/sharer.php?u={{url absolute="true"}}"><span class="hidden">Facebook</span></a>
+                    <a class="fa fa-google-plus-square" target="_blank" href="https://plus.google.com/share?url={{url absolute="true"}}"><span class="hidden">Google+</span></a>
                 </section>
 
             </footer>
-
         {{/post}}
-
     </article>
-
+    {{> comments}}
 </main>

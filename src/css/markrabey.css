@@ -173,52 +173,6 @@ table {
   border-spacing: 0;
 }
 /* ==========================================================================
-    Icons - Sets up the icon font and respective classes
-========================================================================== */
-/* Import the font file with the icons in it */
-@font-face {
-  font-family: 'icons';
-  src: url('../fonts/icons.eot');
-  src: url('../fonts/icons.eot?#iefix') format('embedded-opentype'), url('../fonts/icons.woff') format('woff'), url('../fonts/icons.ttf') format('truetype'), url('../fonts/icons.svg#icons') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-/* Apply these base styles to all icons */
-.icon-ghost:before,
-.icon-feed:before,
-.icon-twitter:before,
-.icon-google-plus:before,
-.icon-facebook:before {
-  font-family: 'icons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* Each icon is created by inserting the corret character into the
-   content of the :before pseudo element. Like a boss. */
-.icon-ghost:before {
-  content: "\e000";
-}
-.icon-feed:before {
-  content: "\e001";
-}
-.icon-twitter:before {
-  content: "\e002";
-  font-size: 1.1em;
-}
-.icon-google-plus:before {
-  content: "\e003";
-}
-.icon-facebook:before {
-  content: "\e004";
-}
-/* ==========================================================================
     General - Setting up some base styles
 ========================================================================== */
 html {
@@ -239,7 +193,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #777777;
+  color: #444444;
 }
 ::-moz-selection {
   text-shadow: none;
@@ -281,10 +235,10 @@ h6 {
 /* links */
 a {
   color: #e25440;
-  -webkit-transition: color 0.4s ease-in-out 0s;
-  -moz-transition: color 0.4s ease-in-out 0s;
-  -o-transition: color 0.4s ease-in-out 0s;
-  transition: color 0.4s ease-in-out 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 a:visited {
   /*color: purple;*/
@@ -487,7 +441,7 @@ margin on the iframe, cause it breaks stuff. */
   position: relative;
   margin: 0 auto;
 }
-/* Centres vertically yo. (IE8+) */
+/* Centers vertically yo. (IE8+) */
 .vertical {
   display: table-cell;
   vertical-align: middle;
@@ -495,185 +449,121 @@ margin on the iframe, cause it breaks stuff. */
 /* ==========================================================================
     General - The main styles for the the theme
 ========================================================================== */
-#wrapper {
-  height: 100%;
-  width: 100%;
-}
-/* Container */
-#page {
-  width: 70%;
-  float: right;
-  background: #ffffff;
-}
-#page .content {
-  margin: auto;
-  padding: 0 25px;
-}
 /* Big cover image on the home page */
 .site-head {
-  top: 0;
-  bottom: 0;
-  float: left;
-  height: 100%;
-  width: 30%;
-  margin-bottom: 5rem;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 500px;
+  margin-bottom: 6rem;
   text-align: center;
-}
-.site-head .site-head-content {
-  z-index: 800;
-}
-.site-head a {
   color: #ffffff;
+  background: #2b2b2b no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
 }
-.site-head a:hover {
-  color: #e25440;
-  text-decoration: none;
+.site-head.post-head {
+  background: #ffffff;
+  margin-bottom: 5rem;
+  height: 300px;
 }
-.site-head .social-icons ul {
-  list-style-type: none;
-  padding: 0;
+.site-head.post-head .site-head-content .blog-title {
+  margin: 3.5rem 0;
 }
-.site-head .social-icons ul li {
-  display: inline-block;
-  font-size: 5rem;
-  width: 20%;
-}
-.site-head .header-overlay {
-  display: block;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  background-color: #373737;
-  background-color: rgba(55, 55, 55, 0.75);
-}
-.blog-logo {
-  text-decoration: none;
-  margin-top: 10px;
-}
-.blog-logo img {
-  max-height: 100px;
-  width: auto;
-  line-height: 0;
+.site-head.post-head .site-head-content .blog-title a {
+  color: #444444;
+  text-shadow: none;
 }
 /* The details of your blog. Defined in ghost/settings/ */
 .blog-title {
-  margin: 10px;
-  font-size: 5rem;
-  font-weight: bold;
-  font-family: 'helvetica', arial, sans-serif;
+  margin: 3.5rem 0 2rem;
+  font-size: 18px;
+}
+.blog-title a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 4.8rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #222222;
+  text-decoration: none;
 }
 .blog-description {
-  margin: 0;
-  font-size: 1.8rem;
-  line-height: 1.5em;
-  font-weight: 300;
-  font-family: 'helvetica', arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.6rem;
   color: #efefef;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px #222222;
+  width: 70%;
+  margin: 0 auto;
+  text-rendering: optimizelegibility;
+}
+.content {
+  width: 80%;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.content .pause {
+  width: 100%;
+  max-width: 780px;
+  border: none;
+  margin: 0 auto 4rem;
+  border-top: 1px solid #ddd;
 }
 /* Every post, on every page, gets this style on its <article> tag */
 .post {
-  position: relative;
-  margin: 4rem auto;
-  padding-bottom: 4rem;
-  border-bottom: #ccc 1px solid;
-  word-break: break-word;
-  hyphens: auto;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 6rem;
 }
-/* Add a little circle in the middle of the border-bottom on our .post
-   just for the lolz and stylepoints. Uncomment to add back in.
-.post:after {
-    display: block;
-    content: "";
-    width: 7px;
-    height: 7px;
-    border: #E7EEF2 1px solid;
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    margin-left: -5px;
-    background: #fff;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    box-shadow: #fff 0 0 0 5px;
-}
-*/
-.post-title {
+.post-header .post-title {
+  padding: 1rem 0 1.2rem;
   margin: 0;
+  line-height: 1.2em;
 }
-.post-title a {
+.post-header .post-title a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  color: #444444;
   text-decoration: none;
-  color: #777777;
 }
-.post-title a:hover {
+.post-header .post-title a:hover {
   color: #e25440;
 }
-.post-excerpt p {
-  margin: 1.6rem 0 0 0;
-  font-size: 0.9em;
-  line-height: 1.6em;
+.post-header ul {
+  margin: 0;
+  padding: 0;
 }
-.post-meta {
+.post-header ul li {
+  padding: 0;
+  margin: 0;
   display: inline-block;
-  margin: 0 0 5px 0;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.5rem;
 }
-.post-meta a {
+.post-header ul li.post-tags a:hover,
+.post-header ul li.post-comments a:hover {
+  text-decoration: underline;
+  color: #e25440;
+}
+.post-header ul li.post-date,
+.post-header ul li.post-tags,
+.post-header ul li.post-tags a,
+.post-header ul li.post-comments,
+.post-header ul li.post-comments a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #777777;
   text-decoration: none;
 }
-.post-meta a:hover {
-  text-decoration: underline;
-}
-.publish-meta {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 4.3rem 0 4rem 0;
-  text-align: right;
-}
-.publish-heading {
-  display: block;
-  font-weight: bold;
-}
-.publish-date {
-  display: block;
+.post-header ul li.post-tags:before,
+.post-header ul li.post-comments:before {
+  content: " • ";
+  font-weight: 700;
+  color: #777777;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.4rem;
-  line-height: 1.5em;
 }
 /* ==========================================================================
     Single Post - When you click on an individual post
 ========================================================================== */
-.post-template {
-  /* Stop .full-img from creating horizontal scroll - slight hack due to
-       imperfections with browser width % calculations and rounding */
-  /* Tweak the .post wrapper style */
-  /* Insert some mad padding up in the header for better spacing */
-}
-.post-template .content {
-  overflow: hidden;
-}
-.post-template .post {
-  margin-top: 0;
-  border-bottom: none;
-  padding-bottom: 0;
-  /* Kill that stylish little circle that was on the border, too */
-}
-.post-template .post:after {
-  display: none;
-}
-.post-template .post-header {
-  padding: 60px 0;
-}
-.post-content {
-  /* Keep images centred and within the bounds of the post-width */
-  /* Break out larger images to be wider than the main text column
-       the class is applied with jQuery */
-}
 .post-content img {
   display: block;
   max-width: 100%;
@@ -681,191 +571,246 @@ margin on the iframe, cause it breaks stuff. */
   margin: 0 auto;
   padding: 0.6em 0;
 }
-/* The author credit area after the post */
 .post-footer {
-  position: relative;
-  margin: 4rem 0 0 0;
-  padding: 4rem 0 0 0;
-  border-top: #ccc 1px solid;
+  width: 100%;
+  max-width: 780px;
+  margin: 1rem auto;
+  max-width: 100%;
+  border-top: 4px #444444 solid;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 1.5rem 0 0;
 }
-.post-footer h4 {
-  font-size: 1.8rem;
-  margin: 0;
+.post-footer .share-post {
+  width: 20%;
+  margin: 1.7rem auto;
+  padding: 0;
+  text-align: center;
 }
-.post-footer p {
-  margin: 1rem 0;
+.post-footer .share-post h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
   font-size: 1.4rem;
-  line-height: 1.6em;
+  color: #444444;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
 }
-.post-footer .share a {
-  font-size: 1.8rem;
-  display: inline-block;
-  margin: 1rem 1.6rem 1.6rem 0;
+.post-footer .share-post a {
+  font-size: 2.2rem;
+  color: #cccccc;
   text-decoration: none;
+  margin: 1.5rem auto;
+  padding-right: 0.5rem;
+  text-align: center;
+}
+.post-footer .share-post a:hover {
+  color: #444444;
+}
+.post-footer .related-posts {
+  flex: 3;
+  width: 60%;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  color: #444444;
+  font-size: 1.4rem;
+  border-right: 1px #efefef solid;
 }
 /* ==========================================================================
     Tag archive
 ========================================================================== */
 /* ==========================================================================
-    Third Party Elements - Embeds from other services
-========================================================================== */
-/* Github */
-.gist table {
-  margin: 0;
-  font-size: 1.4rem;
-}
-.gist .line-number {
-  min-width: 25px;
-  font-size: 1.1rem;
-}
-/* ==========================================================================
     Pagination - Tools to let you flick between pages
 ========================================================================== */
 /* The main wrapper for our pagination links */
 .pagination {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
   position: relative;
+  padding-bottom: 10rem;
+  margin: 0 auto;
   width: 100%;
-  margin: 4rem auto;
-  font-family: 'helvetica', arial, sans-serif;
-  font-size: 1.3rem;
+  max-width: 780px;
   text-align: center;
+  /* Push the previous/next links out to the left/right */
 }
-/* Push the previous/next links out to the left/right */
-.older-posts,
-.newer-posts {
-  position: absolute;
+.pagination .page-number {
+  color: #777777;
   display: inline-block;
-  padding: 0;
-  text-decoration: none;
+  margin: 1.4rem auto;
 }
-.older-posts {
+.pagination .older-posts,
+.pagination .newer-posts {
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  border: 2px solid #dedede;
+  padding: 0.8rem 2.5rem;
+  position: absolute;
+  max-width: 100%;
+  transition: border-color ease-out 0.4s, color ease-out 0.4s;
+}
+.pagination .older-posts:hover,
+.pagination .newer-posts:hover {
+  border-color: #aaaaaa;
+}
+.pagination .older-posts {
   right: 0;
 }
-.page-number {
-  display: inline-block;
-  padding: 2px 0;
-}
-.newer-posts {
+.pagination .newer-posts {
   left: 0;
+}
+.pagination a {
+  color: #777777;
+  text-decoration: none;
 }
 /* ==========================================================================
     Footer - The bottom of every page
 ========================================================================== */
 .site-footer {
-  margin: 8rem 0 0;
-  padding: 2rem 0;
+  background: #222222;
   width: 100%;
-  font-family: 'helvetica', arial, sans-serif;
-  font-size: 1.3rem;
-  line-height: 1.7em;
-  color: #efefef;
-  background-color: #222222;
+}
+.site-footer .content {
+  padding: 6rem 0;
+}
+.site-footer .content p {
   text-align: center;
-  clear: both;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #aaaaaa;
+  line-height: 1.4em;
+  text-shadow: 0px 1px 0px #222222;
+  margin: 0;
 }
-.site-footer a {
-  color: #ffffff;
+.site-footer ul {
+  display: table;
+  border-spacing: 20px 0;
+  border-collapse: separate;
+  margin: 0 auto;
+  position: relative;
+  padding: 0;
 }
-.site-footer a:hover {
+.site-footer ul li {
+  padding: 0;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 100%;
+  background: #444444;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.site-footer ul li:hover {
+  -webkit-box-shadow: 0px 1px 4px #000000;
+  -moz-box-shadow: 0px 1px 4px #000000;
+  box-shadow: 0px 1px 4px #000000;
+  -webkit-transition: box-shadow 0.25s ease 0s;
+  -moz-transition: box-shadow 0.25s ease 0s;
+  -o-transition: box-shadow 0.25s ease 0s;
+  transition: box-shadow 0.25s ease 0s;
+}
+.site-footer ul li a {
+  line-height: 4.4rem;
+  color: #dedede;
+  text-decoration: none;
+  font-size: 3rem;
+  width: 4.4rem;
+  height: 4.4rem;
+}
+.site-footer ul li a:hover {
   color: #e25440;
-  text-decoration: none;
 }
-.poweredby .icon-ghost {
-  font-weight: 700;
-  text-decoration: none;
-}
-.poweredby .icon-ghost:hover {
-  text-decoration: none;
-}
-.poweredby .icon-ghost:before {
-  font-size: 1rem;
-  margin-right: 0.2em;
+.site-footer hr {
+  background: #383838;
+  height: 1px;
+  border-top: 1px #202020 solid;
+  width: 35%;
+  margin: 2.4rem auto;
 }
 /* ==========================================================================
     Media Queries - Smaller than @breakpoint-large
 ========================================================================== */
-@media only screen and (max-width: 960px) {
-  blockquote {
-    margin-left: 0;
-  }
+@media only screen and (max-width: 900px) {
   .site-head {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 15% 0;
+    min-height: 280px;
   }
-  .site-head .social-icons ul li {
-    display: block;
-    margin: 10px auto;
-    width: auto;
-  }
-  .blog-title {
+  .blog-title a {
     font-size: 4rem;
     letter-spacing: -1px;
+    line-height: 1.1;
   }
   .blog-description {
     font-size: 1.7rem;
     line-height: 1.5em;
   }
-  .post {
-    font-size: 0.9em;
-    line-height: 1.6em;
+  .post-title {
+    font-size: 3.5rem;
   }
-  .post-template .post {
-    padding-bottom: 1rem;
-  }
-  .post-template .post .post-header {
-    padding: 40px 0;
+  .post-content {
+    font-size: 1.8rem;
   }
   h1 {
-    font-size: 4.8rem;
+    font-size: 3.5rem;
     text-indent: -2px;
   }
   h2 {
-    font-size: 3.8rem;
+    font-size: 3rem;
   }
   h3 {
-    font-size: 3.3rem;
+    font-size: 2.8rem;
   }
   h4 {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
+  }
+  .post-footer .share-post {
+    width: 20%;
+  }
+  .post-footer .share-post h4 {
+    margin: 0 auto 10%;
+  }
+  .post-footer .share-post a {
+    padding: 0 5% 0 0;
+    margin: 0.5rem 0 0;
   }
 }
 /* ==========================================================================
     Media Queries - Smaller than @breakpoint-medium
 ========================================================================== */
 @media only screen and (max-width: 600px) {
-  .blog-logo img {
-    max-height: 80px;
-  }
-  .inner,
-  .pagination {
-    width: auto;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-  .post {
-    width: auto;
-    margin-left: 16px;
-    margin-right: 16px;
-    font-size: 0.8em;
-    line-height: 1.6em;
-  }
   .site-head {
-    padding: 10% 0;
+    max-height: 100%;
+    margin-bottom: 3rem;
+    width: 100%;
   }
-  .blog-title {
+  .content {
+    width: 94%;
+  }
+  .blog-title a {
     font-size: 3rem;
+    letter-spacing: -1px;
+    margin: 2rem auto;
   }
   .blog-description {
     font-size: 1.5rem;
+    line-height: 1.5em;
+    width: 90%;
   }
   h1,
   h2 {
     font-size: 3rem;
-    line-height: 1.1em;
     letter-spacing: -1px;
+    line-height: 1.1em;
   }
   h3 {
     font-size: 2.8rem;
@@ -873,49 +818,67 @@ margin on the iframe, cause it breaks stuff. */
   h4 {
     font-size: 2.3rem;
   }
-  .post-template .post {
-    padding-bottom: 0;
+  .post-title {
+    font-size: 2.8rem;
   }
-  .post-template .post-header {
-    padding: 30px 0;
+  .post-content {
+    font-size: 1.6rem;
   }
-  .post-content img {
+  .post-header ul {
+    line-height: 1.4;
+  }
+  .date,
+  .readtime,
+  .posttags {
+    font-size: 1.2rem;
+    line-height: 1.2;
     padding: 0;
+    margin: 0;
   }
-  .post-content .full-img {
-    width: auto;
-    width: calc(132%);
-    /* expand with to image + margins */
-    margin: 0 -16px;
-    /* get rid of margins */
-    min-width: 0;
-    max-width: 112%;
-    /* fallback when calc doesn't work */
-  }
-  .post-meta {
-    font-size: 1.3rem;
-  }
-  .post-footer {
-    padding: 4rem 0;
+  .pagination {
+    padding: 2rem 0 5rem;
+    width: 100%;
     text-align: center;
   }
-  .post-footer .share {
+  .newer-posts,
+  .older-posts {
     position: static;
-    width: auto;
-  }
-  .post-footer .share a {
-    margin: 1.4rem 0.8rem 0 0.8rem;
-  }
-  .older-posts,
-  .newer-posts {
-    position: static;
-    margin: 10px 0;
   }
   .page-number {
     display: block;
   }
-  .site-footer {
-    margin-top: 6rem;
-    font-size: 1.1rem;
+  .post-footer {
+    display: block;
+  }
+  .post-footer .share-post {
+    display: block;
+    margin: 3rem auto;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  .post-footer .share-post a {
+    padding: 0;
+    margin: 0 0.8rem;
+    font-size: 2.5rem;
+  }
+  .post-footer .share-post a:last-child {
+    margin: 0 0.8rem;
+    padding: 0;
+  }
+  .post-footer .share-post h4 {
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+  .post-footer .related-posts {
+    display: block;
+    border-right: none;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+  .article {
+    margin-bottom: 4rem;
   }
 }

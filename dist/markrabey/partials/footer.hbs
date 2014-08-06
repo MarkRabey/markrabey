@@ -1,0 +1,27 @@
+<footer class="site-footer">
+	<div class="content">
+		<section class="social-links">
+			<ul>
+				<li><a class="fa fa-rss" target="_blank" href="{{@blog.url}}/rss/"></a></li>
+				<li><a class="fa fa-twitter" href="#"></a></li>
+				<li><a class="fa fa-facebook" href="#"></a></li>
+				<li><a class="fa fa-google-plus" href="#"></a></li>	
+			</ul>
+		</section>
+		<hr />
+		<p class="copyright">
+			All content copyright <a href="{{@blog.url}}/">{{@blog.title}}</a>
+			&bull; All rights reserved.
+		</p>
+		<p class="poweredby">
+			Theme created by <a href="http://markrabey.com">Mark Rabey</a> &bull; Proudly published with <a href="https://ghost.org">Ghost</a>
+		</p>
+	</div>
+</footer>
+{{! Ghost outputs important scripts and data with this tag }}
+{{ghost_foot}}
+
+<script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
+<script type="text/javascript" src="{{asset "js/index.min.js"}}"></script>
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
