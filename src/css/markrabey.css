@@ -452,15 +452,24 @@ margin on the iframe, cause it breaks stuff. */
 /* Big cover image on the home page */
 .site-head {
   position: relative;
-  display: table;
   width: 100%;
   height: 500px;
   margin-bottom: 6rem;
   text-align: center;
   color: #ffffff;
-  background: #2b2b2b no-repeat center center;
+  background: #e25440 no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
+}
+.site-head .site-head-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: table;
+  background-color: #222222;
+  background-color: rgba(34, 34, 34, 0.5);
 }
 .site-head.post-head {
   background: #ffffff;
