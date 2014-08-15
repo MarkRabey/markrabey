@@ -200,6 +200,7 @@ body {
 }
 ::selection {
   text-shadow: none;
+  background-color: #f3b7af;
 }
 h1,
 h2,
@@ -705,7 +706,7 @@ margin on the iframe, cause it breaks stuff. */
   display: table;
   border-spacing: 20px 0;
   border-collapse: separate;
-  margin: 0 auto;
+  margin: 0 auto 15px auto;
   position: relative;
   padding: 0;
 }
